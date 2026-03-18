@@ -1,6 +1,7 @@
 import {Header} from './Components/Header/Header'
 import {Sidebar} from './Components/MainSection/Sidebar/Sidebar'
 import {Player} from './Components/Player/Player'
+import { PageContent } from './Components/MainSection/PageContent/PageContent';
 import { useState } from 'react';
 
 function App() {
@@ -10,10 +11,10 @@ function App() {
     <div>
       <Header/>
         <div>
-            <Sidebar/>
+            <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             <PageContent page = "AllSongsPage"/>
         </div>
-      <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+      
       <Player/>
     </div>
   )
