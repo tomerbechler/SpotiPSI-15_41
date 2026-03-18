@@ -9,10 +9,15 @@ function App() {
   return(
     <div>
       <Header/>
+        <div>
+            <Sidebar/>
+            <PageContent page = "AllSongsPage"/>
+        </div>
       <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
       <Player/>
     </div>
   )
 }
+
 
 export default App
