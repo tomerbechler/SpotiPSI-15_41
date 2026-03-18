@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import type Song from "../types";
 
-const FetchFavoriteSongId = () =>{
-    const [favoriteIdList, setFavoriteIdList] = useState<string[]>([])
+interface Props{
+    
+    
+}
+
+const FetchFavoriteSongId = (favoriteIdList:string[],setFavoriteIdList:(data:string[])=> void) =>{
     const [isLoading, setIsLoading] = useState(false)
     const [error,setError] = useState<string | null> (null)
 
@@ -23,9 +27,7 @@ const FetchFavoriteSongId = () =>{
             setIsLoading(false)
         }
     };
-    useEffect(() => {
-        FetchFavoriteSongId();
-    },[favoriteIdList])
+    
 
     return(
         {favoriteIdList}
