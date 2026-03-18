@@ -31,17 +31,3 @@ const FetchSongs = () =>{
     )
 }
 export default FetchSongs
-
-
-// return(
-//         <div>
-//             {isLoading && <p>Loading...</p>}
-//             {error && <p>{error}</p>}
-//             {!isLoading && !error && songList.map((song) => (
-//                 <div key ={song.id}>
-//                     <h2>{song.name} - {song.artist}</h2>
-//                 </div>
-//                 )
-//             )}
-//         </div>
-//     )
