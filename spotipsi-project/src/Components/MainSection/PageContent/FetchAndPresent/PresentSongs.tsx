@@ -9,10 +9,13 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import type Song from "../types";
 import useStyles from "./presentSongsStyles";
 import { Typography } from "@mui/material";
+
 interface Props {
   data: Song[];
+  onLikeChange: (songId:string, checked:boolean) => void
 }
-const PresentSongs: React.FC<Props> = ({ data }) => {
+
+const PresentSongs: React.FC<Props> = ({ data,onLikeChange }) => {
   const { classes } = useStyles();
 
   return (
@@ -31,6 +34,7 @@ const PresentSongs: React.FC<Props> = ({ data }) => {
                 className={classes.checkBox}
                 icon={<FavoriteBorderIcon />}
                 checkedIcon={<FavoriteIcon />}
+                onChange={(e,checked) => onLikeChange(song.id, checked)}
               />
             </div>
           </ListItem>
