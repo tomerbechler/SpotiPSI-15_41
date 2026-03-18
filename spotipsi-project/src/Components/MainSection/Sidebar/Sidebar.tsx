@@ -15,8 +15,8 @@ export const Sidebar: React.FC<Props> = ({setCurrentPage}) => {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.sideBar} onClick={()=>setCurrentPage("allSongsPage")}>
-      <div className={classes.option}>
+    <div className={classes.sideBar}>
+      <div className={classes.option} onClick={()=>setCurrentPage("allSongsPage")}>
         <HomeIcon />
         <Typography variant="body1" component="h6">
           כל השירים

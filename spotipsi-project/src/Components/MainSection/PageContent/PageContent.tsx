@@ -8,13 +8,13 @@ export interface Props {
   page: string;
 }
 export const PageContent: React.FC<Props> = ({ page }) => {
-  const [favoriteIdList, setFavoriteIdList] = useState<string[]>([]);
-
+    
   // useEffect(() => {
   //     FetchFavoriteSongId(favoriteIdList,setFavoriteIdList);
   // },[favoriteIdList])
 
   if (page == "AllSongsPage") {
+    console.log(page)
     const { songList } = FetchSongs();
     return <AllSongsPage data={songList} />;
   }
