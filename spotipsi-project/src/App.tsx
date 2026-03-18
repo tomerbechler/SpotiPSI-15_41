@@ -1,13 +1,15 @@
 import {Header} from './Components/Header/Header'
-import {MainSection} from './Components/MainSection/MainSection'
+import {Sidebar} from './Components/MainSection/Sidebar/Sidebar'
 import {Player} from './Components/Player/Player'
-import './App.css'
+import { useState } from 'react';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("allSongs");
+
   return(
     <div>
       <Header/>
-      <MainSection/>
+      <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
       <Player/>
     </div>
   )
