@@ -16,19 +16,19 @@ export const Sidebar: React.FC<Props> = ({setCurrentPage}) => {
 
   return (
     <div className={classes.sideBar}>
-      <div className={classes.option} onClick={()=>setCurrentPage("allSongsPage")}>
+      <div className={classes.option} onClick={()=>setCurrentPage("AllSongsPage")}>
         <HomeIcon />
         <Typography variant="body1" component="h6">
           כל השירים
         </Typography>
       </div>
-      <div className={classes.option} onClick={()=>setCurrentPage("playlistsPage")}>
+      <div className={classes.option} onClick={()=>setCurrentPage("PlaylistsPage")}>
         <LibraryMusicIcon />
         <Typography variant="body1" component="h6">
           פלייליסטים
         </Typography>
       </div>
-      <div className={classes.option} onClick={()=>setCurrentPage("favoritePage")}>
+      <div className={classes.option} onClick={()=>setCurrentPage("FavoritePage")}>
         <FavoriteIcon/>
         <Typography variant="body1" component="h6">
           מועדפים

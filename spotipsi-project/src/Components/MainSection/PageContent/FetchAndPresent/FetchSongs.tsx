@@ -1,34 +1,16 @@
 import { useEffect, useState } from "react";
 import type Song from "../types";
 
-const FetchSongs = () =>{
-    const [songList, setSongList] = useState<Song[]>([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [error,setError] = useState<string | null> (null)
-
-    const fetchSongs = async () => {
-        setIsLoading(true)
-        try{
-            const response = await fetch('http://127.0.0.1:5001/api/songs');
-            const data = await response.json();
-            setSongList(data)
-            console.log("songs loaded")
-        }
-        catch(error){
-            setError("Somthing went wrong")
-            console.log(error)
-            return
-        }
-        finally{
-            setIsLoading(false)
-        }
-    };
-    useEffect(() => {
-        fetchSongs();
-    },[])
-
-    return(
-        {songList}
-    )
+const FetchSongs = async() =>{
+    try{
+        const response = await fetch('http://127.0.0.1:5001/api/songs');
+        const data = await response.json();
+        console.log("songs loaded")
+        return (data)
+    }
+    catch(error){
+        console.log(error)
+        return //[]
+    }
 }
 export default FetchSongs
