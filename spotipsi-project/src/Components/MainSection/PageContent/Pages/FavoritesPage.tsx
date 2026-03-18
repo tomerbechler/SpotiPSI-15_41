@@ -3,14 +3,13 @@ import PresentSongs from '../FetchAndPresent/PresentSongs'
 
 interface Props{
     data:Song[],
-    idList:number[]
+    FavoriteidList:string[]
 }
 
-const FavoritePage:React.FC<Props> = ({data,idList}) =>{
+const FavoritePage:React.FC<Props> = ({data,FavoriteidList}) =>{
 
-    const filterSongs:Song[] = data.filter(song=>{
-        idList.some(id => id === parseInt(song.id))
-    })
+    const filterSongs:Song[] = data.filter(song=> FavoriteidList.some(id => id === song.id)
+    )
     return(
         <div>
             <PresentSongs data={filterSongs}/>

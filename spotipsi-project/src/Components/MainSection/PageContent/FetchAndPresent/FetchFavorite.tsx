@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type Song from "../types";
 
 const FetchFavoriteSongId = () =>{
-    const [idList, setIdList] = useState<number[]>([])
+    const [favoriteIdList, setFavoriteIdList] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [error,setError] = useState<string | null> (null)
 
@@ -11,7 +11,7 @@ const FetchFavoriteSongId = () =>{
         try{
             const response = await fetch('http://127.0.0.1:5001/api/favorites');
             const data = await response.json();
-            setIdList(data)
+            setFavoriteIdList(data)
             console.log("songs loaded")
         }
         catch(error){
@@ -25,10 +25,10 @@ const FetchFavoriteSongId = () =>{
     };
     useEffect(() => {
         FetchFavoriteSongId();
-    },[idList])
+    },[favoriteIdList])
 
     return(
-        {idList}
+        {favoriteIdList}
     )
 }
 export default FetchFavoriteSongId

@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 //import type Props from './types'
 
 export interface Props{
-    page: string // enum 
+    page: string
 }
 export const PageContent: React.FC<Props> =({page}) =>{
     const [currentPage, setCurrentPage] = useState('AllSongsPage')
