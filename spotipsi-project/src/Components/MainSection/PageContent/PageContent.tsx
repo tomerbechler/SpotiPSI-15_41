@@ -7,12 +7,9 @@ export interface Props{
     page: string
 }
 export const PageContent: React.FC<Props> =({page}) =>{
-    const [currentPage, setCurrentPage] = useState('AllSongsPage')
-    useEffect (() =>{
-        setCurrentPage(page)
-    },[page])
+    
     const {songList} = FetchSongs()
-    if (currentPage == 'AllSongsPage'){
+    if (page == 'AllSongsPage'){
         return(
             <AllSongsPage data={songList}/>
         )
