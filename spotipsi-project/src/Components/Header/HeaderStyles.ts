@@ -7,8 +7,8 @@ const useStyles = makeStyles()(()=>({
         alignSelf: "end",
         alignItems:"center",
         backgroundColor:"rgb(72, 69, 69)",
-        height:"40px"
-       
+        height:"40px",
+        color:"purple"
     },
 
 }));
