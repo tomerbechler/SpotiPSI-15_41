@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-
+import AddIcon from '@mui/icons-material/Add';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
@@ -21,9 +21,17 @@ const PresentSongs:React.FC<Props> = ({data}) =>{
     const { classes } = useStyles();
 
     return(
-        <div className={classes.songs}>
-            {data.map((song) => <div key={song.id}> D {song.name} - {song.artist} <div>+ heart</div> </div>)}
-        </div>
+        <List>
+            {data.map((song) =>(
+                 <ListItem key={song.id}>{
+                     <ListItemText primary = {`${song.name} - ${song.artist}`}/>}
+                     <div>
+                        <AddIcon/> 
+                        <Checkbox icon = {<FavoriteBorderIcon/>} checkedIcon = {<FavoriteIcon/>}/>
+                    </div>
+                </ListItem>)
+                )}
+        </List>
     )
 }
 export default PresentSongs

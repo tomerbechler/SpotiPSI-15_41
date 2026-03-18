@@ -5,7 +5,7 @@ import { PageContent } from "./Components/MainSection/PageContent/PageContent";
 import { useState } from "react";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("allSongs");
+  const [currentPage, setCurrentPage] = useState("AllSongsPage");
 
   return (
     <div>
