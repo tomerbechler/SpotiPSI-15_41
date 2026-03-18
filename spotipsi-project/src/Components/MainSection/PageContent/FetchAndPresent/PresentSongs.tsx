@@ -12,10 +12,11 @@ import { Typography } from "@mui/material";
 
 interface Props {
   data: Song[];
+  favoriteIdList: string[];
   onLikeChange: (songId:string, checked:boolean) => void
 }
 
-const PresentSongs: React.FC<Props> = ({ data,onLikeChange }) => {
+const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange }) => {
   const { classes } = useStyles();
 
   return (
@@ -32,9 +33,10 @@ const PresentSongs: React.FC<Props> = ({ data,onLikeChange }) => {
               <AddIcon />
               <Checkbox
                 className={classes.checkBox}
+                checked={favoriteIdList.includes(song.id)} 
                 icon={<FavoriteBorderIcon />}
                 checkedIcon={<FavoriteIcon />}
-                onChange={(e,checked) => onLikeChange(song.id, checked)}
+                onChange={(_,checked) => onLikeChange(song.id,checked)}
               />
             </div>
           </ListItem>

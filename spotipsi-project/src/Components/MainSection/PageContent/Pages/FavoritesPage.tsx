@@ -5,38 +5,18 @@ import PresentSongs from '../FetchAndPresent/PresentSongs'
 interface Props{
     data:Song[],
     FavoriteidList:string[]
+    onLikeChange: (songId:string, checked:boolean) => void
+
 }
 
-const FavoritePage:React.FC<Props> = ({data,FavoriteidList}) =>{
+const FavoritePage:React.FC<Props> = ({data,FavoriteidList,onLikeChange}) =>{
 
     const filterSongs:Song[] = data.filter(song=> FavoriteidList.some(id => id === song.id))
 
-    const handleLike = async (songId: string, checkd:boolean) => {
-
-        //const {favoriteIdList} = FetchFavoriteSongId()
-        const response = await fetch('http://127.0.0.1:5001//api/favorites');
-        const favoriteIdList:string[] = await response.json();
-
-        if (checkd && !favoriteIdList.includes(songId)){
-            await fetch('http://127.0.0.1:5001/api/favorites/add',
-                 {
-                    method: 'POST',
-                    body: JSON.stringify(songId)
-                })
-        }
-
-        else if (!checkd && favoriteIdList.includes(songId)){
-            await fetch('http://127.0.0.1:5001/api/favorites/remove',
-                 {
-                    method: 'POST',
-                    body: JSON.stringify(songId)
-                })
-        }
-    }
 
     return(
         <div>
-            <PresentSongs data={filterSongs} onLikeChange={handleLike}/>
+            <PresentSongs data={filterSongs} favoriteIdList={FavoriteidList} onLikeChange={onLikeChange}/>
         </div>
     )
 }
