@@ -12,7 +12,7 @@ function App() {
       <Header />
       <div>
         <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <PageContent page="AllSongsPage" />
+        <PageContent page={currentPage}/>
       </div>
 
       <Player />

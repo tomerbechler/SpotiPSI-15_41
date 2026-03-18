@@ -13,9 +13,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import type Song from '../types'
-const PresentSongs = (data:Song[]) =>{
+import useStyles from "./presentSongsStyles"
+interface Props{
+    data:Song[]
+}
+const PresentSongs:React.FC<Props> = ({data}) =>{
+    const { classes } = useStyles();
+
     return(
-        <div>
+        <div className={classes.songs}>
             {data.map((song) => <div key={song.id}> D {song.name} - {song.artist} <div>+ heart</div> </div>)}
         </div>
     )
