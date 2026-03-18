@@ -1,16 +1,20 @@
 import {Header} from './Components/Header/Header'
-import {MainSection} from './Components/MainSection/MainSection'
 import {Player} from './Components/Player/Player'
-import './App.css'
+import {Sidebar} from './Components/MainSection/Sidebar/Sidebar'
+import {PageContent}  from './Components/MainSection/PageContent/PageContent'
 
 function App() {
   return(
     <div>
       <Header/>
-      <MainSection/>
+        <div>
+            <Sidebar/>
+            <PageContent page = "AllSongsPage"/>
+        </div>
       <Player/>
     </div>
   )
 }
+
 
 export default App
