@@ -1,9 +1,14 @@
 import type Song from '../types'
 import PresentSongs from '../FetchAndPresent/PresentSongs'
-const AllSongsPage = (data:Song[]) =>{
+
+interface Props{
+    data:Song[]
+}
+
+const AllSongsPage:React.FC<Props> = ({data}) =>{
     return(
         <div>
-            {PresentSongs(data)}
+            <PresentSongs data={data}/>
         </div>
     )
 }

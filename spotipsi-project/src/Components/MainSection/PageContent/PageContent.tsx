@@ -13,6 +13,8 @@ export const PageContent: React.FC<Props> =({page}) =>{
     },[page])
     const {songList} = FetchSongs()
     if (currentPage == 'AllSongsPage'){
-        return(AllSongsPage(songList))
+        return(
+            <AllSongsPage data={songList}/>
+        )
     }
 }
