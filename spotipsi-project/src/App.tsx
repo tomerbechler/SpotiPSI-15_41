@@ -8,7 +8,8 @@ import useStyles from "./AppStyle";
 function App() {
   const [currentPage, setCurrentPage] = useState("AllSongsPage");
   const { classes } = useStyles();
-
+  console.log(currentPage)
+  
   return (
     <div>
       <Header />
