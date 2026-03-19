@@ -133,6 +133,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
             songs={songs}
             favoriteIdList={favoriteIdList}
             onLikeChange={handleLike}
+            addSong={addSong}
     />)
   }
 };

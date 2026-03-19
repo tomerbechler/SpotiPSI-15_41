@@ -18,10 +18,12 @@ export interface Props{
     songs: Song[]
     favoriteIdList: string[]
     onLikeChange:(songId:string, checked:boolean) =>void
+    addSong:(playlistId:string,songId:any) => void
+
 }
 
 const PlaylistsPage:React.FC<Props> = ({
-    playlists,addPlaylist,handlePlaylistClick,currentPlaylist,setCurrentPlaylist,
+    playlists,addPlaylist,handlePlaylistClick,currentPlaylist,setCurrentPlaylist,addSong,
     songs,favoriteIdList,onLikeChange}) =>{
 
     const { classes } = useStyles();
@@ -38,15 +40,16 @@ const PlaylistsPage:React.FC<Props> = ({
                 data={currentPlaylistSongs}
                 favoriteIdList={favoriteIdList}
                 onLikeChange={onLikeChange}
+                addSong={addSong}
                 playlists={playlists}/>
         )
     }
 
     if (playlistSongsDiv){
         return(<div>
-            <div>
+            <div style={{display:"flex", justifyContent:"space-between",alignItems:"center"}}>
                 <Typography variant="h3" className={classes.title}>{currentPlaylist?.name}</Typography>
-                <IconButton onClick ={()=>setCurrentPlaylist(null)}>
+                <IconButton style={{color:"purple"}} onClick ={()=>setCurrentPlaylist(null)}>
                     <ArrowBack/>
                 </IconButton>
             </div>
