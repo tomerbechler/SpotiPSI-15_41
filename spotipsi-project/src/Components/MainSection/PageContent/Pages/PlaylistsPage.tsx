@@ -2,8 +2,12 @@ import { Typography, Button} from "@mui/material";
 import useStyles from "../../PageContent/FetchAndPresent/presentSongsStyles";
 
 
+interface Props{
+    
+    addPlaylist:(name:string)=>void
+}
 
-const FavoritePage:React.FC = () =>{
+const FavoritePage:React.FC<Props> = ({addPlaylist}) =>{
 
     const { classes } = useStyles();
     return(
