@@ -116,6 +116,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
             addPlaylist={handlePlaylist}
             handlePlaylistClick={handlePlaylistClick}
             currentPlaylist={currentPlaylist}
+            setCurrentPlaylist={setCurrentPlaylist}
             songs={songs}
             favoriteIdList={favoriteIdList}
             onLikeChange={handleLike}

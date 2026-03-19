@@ -1,4 +1,6 @@
 import { Typography} from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
+import {IconButton} from "@mui/material";
 import useStyles from "../../PageContent/FetchAndPresent/presentSongsStyles";
 import FormDialog from "./Components/PlaylistDialog"
 import PresentPlaylists from "../FetchAndPresent/PresentPlaylists"
@@ -12,18 +14,23 @@ export interface Props{
     addPlaylist:(name:string)=>void
     handlePlaylistClick: (playlistName:string)=>void
     currentPlaylist: Playlist|null
+    setCurrentPlaylist: (state:Playlist|null) => void
     songs: Song[]
     favoriteIdList: string[]
     onLikeChange:(songId:string, checked:boolean) =>void
 }
 
 const PlaylistsPage:React.FC<Props> = ({
-    playlists,addPlaylist,handlePlaylistClick,currentPlaylist,
+    playlists,addPlaylist,handlePlaylistClick,currentPlaylist,setCurrentPlaylist,
     songs,favoriteIdList,onLikeChange}) =>{
 
     const { classes } = useStyles();
-    const currentPlaylistSongs = currentPlaylist ?
-    songs.filter((song)=> currentPlaylist.songIds.includes(song.id)) :[];
+
+    let currentPlaylistSongs: Song[] = []
+    if (currentPlaylist){
+        currentPlaylistSongs = songs.filter((song) => currentPlaylist.songIds.includes(song.id))
+    }
+
     let playlistSongsDiv = null
     if (currentPlaylist){
         playlistSongsDiv = (
@@ -34,7 +41,20 @@ const PlaylistsPage:React.FC<Props> = ({
                 playlists={playlists}/>
         )
     }
-    return(
+
+    if (playlistSongsDiv){
+        return(<div>
+            <div>
+                <Typography variant="h3" className={classes.title}>{currentPlaylist?.name}</Typography>
+                <IconButton onClick ={()=>setCurrentPlaylist(null)}>
+                    <ArrowBack/>
+                </IconButton>
+            </div>
+            {playlistSongsDiv}
+        </div>)
+    }
+    else{
+        return(
         <div>
             <div className={classes.playListHeader}>
                 <Typography variant="h3" className={classes.title}>הפלייליסטים שלי</Typography>
@@ -46,9 +66,10 @@ const PlaylistsPage:React.FC<Props> = ({
                  playlists={playlists}
                  onPlaylistClick={handlePlaylistClick}/>
             </div>
-            {playlistSongsDiv}
-        </div>
-        
-    )
+        </div>   
+        )
+    }
+
 }
+    
 export default PlaylistsPage
