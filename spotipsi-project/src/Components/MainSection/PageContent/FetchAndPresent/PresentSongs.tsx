@@ -7,18 +7,41 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PlayArrow from '@mui/icons-material/PlayArrow';
-
+import Popper from "@mui/material/Popper";
+import Paper from "@mui/material/Paper";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import MenuList from "@mui/material/MenuList";
+import MenuItem from "@mui/material/MenuItem";
 import type Song from "../types";
+import type Playlist from "../types";
+
 import useStyles from "./presentSongsStyles";
+import { useState } from "react";
 
 interface Props {
   data: Song[];
   favoriteIdList: string[];
   onLikeChange: (songId:string, checked:boolean) => void
+  playlists:Playlist[]
 }
 
-const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange }) => {
+
+
+const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playlists}) => {
+
   const { classes } = useStyles();
+
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(prev => (prev ? null : event.currentTarget));
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   return (
     <>
@@ -30,9 +53,20 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange }) => 
             </IconButton>
             {<ListItemText className={classes.text} primary={`${song.name} - ${song.artist}`} />}
             <div className={classes.icons}>
-            <IconButton>
+            <IconButton onClick={handleClick}>
                 <AddIcon className={classes.addIcon}/>
             </IconButton>
+            <Popper open={open} anchorEl={anchorEl} placement="bottom-start">
+            <Paper>
+            <ClickAwayListener onClickAway={handleClose}>
+                <MenuList>
+                    {playlists.map((playlist) =>(
+                        <MenuItem onClick={() => { console.log(playlist.name); handleClose(); }}>{playlist.name}</MenuItem>
+                    ))}
+                </MenuList>
+                </ClickAwayListener>
+                </Paper>
+            </Popper>
               <Checkbox
                 className={classes.checkBox}
                 checked={favoriteIdList.includes(song.id)} 
