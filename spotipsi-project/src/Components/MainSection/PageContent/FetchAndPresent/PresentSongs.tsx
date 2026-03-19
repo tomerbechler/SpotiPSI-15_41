@@ -3,12 +3,13 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import AddIcon from "@mui/icons-material/Add";
+import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import PlayArrow from '@mui/icons-material/PlayArrow';
 
 import type Song from "../types";
 import useStyles from "./presentSongsStyles";
-import { Typography } from "@mui/material";
 
 interface Props {
   data: Song[];
@@ -21,16 +22,17 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange }) => 
 
   return (
     <>
-      <Typography variant="h2" className={classes.title}>
-        {" "}
-        כל השירים
-      </Typography>
       <List>
         {data.map((song) => (
           <ListItem key={song.id} className={classes.item}>
-            {<ListItemText primary={`${song.name} - ${song.artist}`} />}
+            <IconButton>
+                <PlayArrow className={classes.playArrow} />
+            </IconButton>
+            {<ListItemText className={classes.text} primary={`${song.name} - ${song.artist}`} />}
             <div className={classes.icons}>
-              <AddIcon />
+            <IconButton>
+                <AddIcon className={classes.addIcon}/>
+            </IconButton>
               <Checkbox
                 className={classes.checkBox}
                 checked={favoriteIdList.includes(song.id)} 

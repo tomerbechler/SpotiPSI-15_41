@@ -8,10 +8,12 @@ export const Header: React.FC = () => {
 
   return (
     <div className={classes.header}>
-      <MusicNoteIcon/>
-      <Typography variant="body1">
-        SpotiPsi 
-      </Typography>
+      <div className={classes.logo}>
+        <MusicNoteIcon className={classes.icon}/>
+        <Typography variant="h3" className={classes.logoText}>
+          SpotiPsi 
+        </Typography>
+      </div>
     </div>
   );
 }

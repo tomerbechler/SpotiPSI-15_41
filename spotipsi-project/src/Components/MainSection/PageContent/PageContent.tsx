@@ -1,6 +1,7 @@
 import FetchSongs from "./FetchAndPresent/FetchSongs";
 import AllSongsPage from "./Pages/AllSongsPage";
 import FavoritePage from "./Pages/FavoritesPage";
+import PlaylistsPage from "./Pages/PlaylistsPage";
 import { useState, useEffect } from "react";
 import FetchFavoriteSongId from "./FetchAndPresent/FetchFavorite";
 import type Song from './types'
@@ -71,6 +72,10 @@ export const PageContent: React.FC<Props> = ({ page }) => {
 
   else if (page == "FavoritePage") {
     console.log(page)
-    return <FavoritePage data={songs} FavoriteidList={favoriteIdList} onLikeChange={handleLike} />; //////////// ID LIST
+    return <FavoritePage data={songs} FavoriteidList={favoriteIdList} onLikeChange={handleLike} />;
+  }
+  else if (page == "PlaylistsPage") {
+    console.log(page)
+    return <PlaylistsPage/>;
   }
 };

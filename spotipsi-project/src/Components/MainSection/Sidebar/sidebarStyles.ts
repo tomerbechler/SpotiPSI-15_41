@@ -2,13 +2,13 @@ import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()(() => ({
   sideBar: {
-    width: "200px",
     height: "100vh",
     display: "flex",
     flexDirection: "column",
     justifySelf:"end",
     paddingTop: "10px",
-    direction: "rtl",             
+    direction: "rtl",
+    marginLeft: 0,
   },
 
   option: {
@@ -20,13 +20,10 @@ const useStyles = makeStyles()(() => ({
     color:"white",
 
     "&:hover": {
-      backgroundColor: "#1f1f1f", 
+      backgroundColor: "#b175e38f",
     },
   },
 
-  icon: {
-    fontSize: "24px",
-  },
 }));
 
 export default useStyles;
