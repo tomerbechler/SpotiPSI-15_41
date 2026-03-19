@@ -33,9 +33,11 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playli
   const { classes } = useStyles();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [selectedSongId, setSelectedSongId] = useState<string | null>(null)
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>, songId:string) => {
         setAnchorEl(prev => (prev ? null : event.currentTarget));
+        setSelectedSongId(songId)
   };
 
   const handleClose = () => {
@@ -54,20 +56,9 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playli
             </IconButton>
             {<ListItemText className={classes.text} primary={`${song.name} - ${song.artist}`} />}
             <div className={classes.icons}>
-            <IconButton onClick={handleClick}>
+            <IconButton onClick={(e)=>handleClick(e,song.id)}>
                 <AddIcon className={classes.addIcon}/>
             </IconButton>
-            <Popper open={open} anchorEl={anchorEl} placement="bottom-start">
-            <Paper>
-            <ClickAwayListener onClickAway={handleClose}>
-                <MenuList>
-                    {playlists.map((playlist) =>(
-                        <MenuItem onClick={() => { console.log(playlist.name); handleClose(); addSong(playlist.id,song.id)}}>{playlist.name}</MenuItem>
-                    ))}
-                </MenuList>
-                </ClickAwayListener>
-                </Paper>
-            </Popper>
               <Checkbox
                 className={classes.checkBox}
                 checked={favoriteIdList.includes(song.id)} 
@@ -79,6 +70,17 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playli
           </ListItem>
         ))}
       </List>
+      <Popper open={open} anchorEl={anchorEl} placement="bottom-start">
+            <Paper>
+            <ClickAwayListener onClickAway={handleClose}>
+                <MenuList>
+                    {playlists.map((playlist) =>(
+                        <MenuItem onClick={() => { console.log(playlist.name); console.log(selectedSongId); handleClose(); addSong(playlist.id,selectedSongId)}}>{playlist.name}</MenuItem>
+                    ))}
+                </MenuList>
+                </ClickAwayListener>
+                </Paper>
+            </Popper>
     </>
   );
 };
