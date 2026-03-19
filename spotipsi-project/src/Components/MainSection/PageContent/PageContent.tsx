@@ -40,7 +40,18 @@ export const PageContent: React.FC<Props> = ({ page }) => {
     }
     loadPlaylists();
   }, []);
-
+  const addSong = async (playlistId: string, songIdToAdd: any) => {
+    playlists.forEach((playlist) => {
+      if (playlist.id === playlistId) {
+        playlist.songIds.push(songIdToAdd);
+      }
+    });
+    await fetch(`http://127.0.0.1:5001/api/playlists/${playlistId}/add`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ songId: songIdToAdd }),
+    });
+  };
   const handleLike = async (songId: string, checkd: boolean) => {
     const favoriteIdList: string[] = await FetchFavoriteSongId();
 
@@ -74,7 +85,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
         body: JSON.stringify({ name: playlistName }),
       });
       const playlist: Playlist = await response.json();
-      console.log(playlist)
+      console.log(playlist);
       SetPlaylists((prev) => [...prev, playlist]);
     } else {
       console.log("playlist name is existed");
@@ -97,6 +108,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
         FavoriteidList={favoriteIdList}
         onLikeChange={handleLike}
         playlists={playlists}
+        addSong={addSong}
       />
     );
   } else if (page == "FavoritePage") {
@@ -107,6 +119,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
         FavoriteidList={favoriteIdList}
         onLikeChange={handleLike}
         playlists={playlists}
+        addSong={addSong}
       />
     );
   } else if (page == "PlaylistsPage") {

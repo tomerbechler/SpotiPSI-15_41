@@ -40,13 +40,7 @@ const useStyles = makeStyles()(()=>({
         fontSize: "40px",
         color: "white"
     },
-    addPlaylistBtn:{
-        marginTop:"3%",
-        border: "1px solid #bd6ffc",
-        color: "#bd6ffc",
-        direction:"rtl",
-        borderRadius: "20px"
-    },
+    
     playListHeader:{    
         display: "flex",
         alignItems:"center",
