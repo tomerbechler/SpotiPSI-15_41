@@ -4,11 +4,10 @@ export default interface Song{
     artist: string,
     album: string
 }
-export interface Playlist{
+export default interface Playlist{
     id:string,
     name:string,
-    songsId:number[]
-
+    songIds:[]
 }
 
 // export enum Pages{

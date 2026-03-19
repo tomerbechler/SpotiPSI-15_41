@@ -1,28 +1,30 @@
 import { Typography} from "@mui/material";
 import useStyles from "../../PageContent/FetchAndPresent/presentSongsStyles";
 import FormDialog from "./Components/PlaylistDialog"
+import PresentPlaylists from "../FetchAndPresent/PresentPlaylists"
+import type Playlist from "../types"
 
-interface Props{
-    
+export interface Props{
+    playListData: Playlist[]
     addPlaylist:(name:string)=>void
 }
 
-const FavoritePage:React.FC<Props> = ({addPlaylist}) =>{
+const PlaylistsPage:React.FC<Props> = ({playListData,addPlaylist}) =>{
 
     const { classes } = useStyles();
-    const func = () => {}
     return(
         <div>
             <div className={classes.playListHeader}>
                 <Typography variant="h3" className={classes.title}>הפלייליסטים שלי</Typography>
-                <FormDialog onSubmit={func}/>
+                <FormDialog onSubmit={addPlaylist}/>
             </div>
 
             <div>
+                <PresentPlaylists playListData={playListData}/>
             </div>
 
         </div>
         
     )
 }
-export default FavoritePage
+export default PlaylistsPage
