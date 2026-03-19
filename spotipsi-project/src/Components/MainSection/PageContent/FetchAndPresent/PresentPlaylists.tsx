@@ -1,6 +1,7 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import { Typography } from "@mui/material";
 import type Playlist from "../types";
 
 import useStyles from "./presentSongsStyles";
@@ -23,6 +24,7 @@ const PresentPlaylists: React.FC<Props> = ({playlists,onPlaylistClick}) => {
            className={classes.text}
            primary={`${playlist.name}`}
             secondary={`שירים ${playlist.songIds.length}`}
+            style={{color:"purple"}}
           />
           </ListItem>
         ))}
