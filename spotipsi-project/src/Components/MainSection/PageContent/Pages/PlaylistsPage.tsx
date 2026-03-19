@@ -1,16 +1,16 @@
-import { Typography, Button} from "@mui/material";
+import { Typography} from "@mui/material";
 import useStyles from "../../PageContent/FetchAndPresent/presentSongsStyles";
-
+import FormDialog from "./Components/PlaylistDialog"
 
 
 const FavoritePage:React.FC = () =>{
-
     const { classes } = useStyles();
+    const func = () => {}
     return(
         <div>
             <div className={classes.playListHeader}>
                 <Typography variant="h3" className={classes.title}>הפלייליסטים שלי</Typography>
-                <Button className={classes.addPlaylistBtn}>צור פלייליסט +</Button>
+                <FormDialog onSubmit={func}/>
             </div>
 
             <div>
