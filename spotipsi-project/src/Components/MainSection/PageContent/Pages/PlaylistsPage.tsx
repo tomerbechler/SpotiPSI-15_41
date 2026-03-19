@@ -5,11 +5,11 @@ import PresentPlaylists from "../FetchAndPresent/PresentPlaylists"
 import type Playlist from "../types"
 
 export interface Props{
-    playListData: Playlist[]
+    playlists: Playlist[]
     addPlaylist:(name:string)=>void
 }
 
-const PlaylistsPage:React.FC<Props> = ({playListData,addPlaylist}) =>{
+const PlaylistsPage:React.FC<Props> = ({playlists,addPlaylist}) =>{
 
     const { classes } = useStyles();
     return(
@@ -20,7 +20,7 @@ const PlaylistsPage:React.FC<Props> = ({playListData,addPlaylist}) =>{
             </div>
 
             <div>
-                <PresentPlaylists playListData={playListData}/>
+                <PresentPlaylists playlists={playlists}/>
             </div>
 
         </div>

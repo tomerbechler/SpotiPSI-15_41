@@ -101,7 +101,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
   } else if (page == "PlaylistsPage") {
     console.log(page);
     return (<PlaylistsPage
-            playListData ={playlists}
+            playlists ={playlists}
              addPlaylist={handlePlaylist}
              />)
   }
