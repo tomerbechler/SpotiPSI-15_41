@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import useStyles from "../../FetchAndPresent/presentSongsStyles";
+import useStyles from "../Components/playlistDialogStyles";
 
 interface Props{
     onSubmit: (value: string) => void;
@@ -36,7 +36,7 @@ export default function FormDialog({ onSubmit }:Props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>יצירת פלייליסט חדש</DialogTitle>
         <DialogContent>
-          <form onSubmit={handleSubmit} id="playlist-form">
+          <form  onSubmit={handleSubmit} id="playlist-form">
             <TextField
               autoFocus
               required

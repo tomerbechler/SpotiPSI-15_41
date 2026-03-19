@@ -9,15 +9,15 @@ interface Props{
     FavoriteidList:string[],
     onLikeChange: (songId:string, checked:boolean) => void
     playlists:Playlist[]
-
+    addSong:(playlistId:string,songId:any) => void
 }
 
-const AllSongsPage:React.FC<Props> = ({data,FavoriteidList,onLikeChange,playlists}) =>{
+const AllSongsPage:React.FC<Props> = ({data,FavoriteidList,onLikeChange,playlists,addSong}) =>{
     const { classes } = useStyles();
     return(
         <div>
             <Typography variant="h3" className={classes.title}> כל השירים</Typography>
-            <PresentSongs data={data} favoriteIdList ={FavoriteidList} onLikeChange={onLikeChange} playlists={playlists}/>
+            <PresentSongs data={data} favoriteIdList ={FavoriteidList} onLikeChange={onLikeChange} playlists={playlists} addSong={addSong}/>
         </div>
     )
 }

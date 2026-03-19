@@ -7,7 +7,7 @@ export default interface Song{
 export default interface Playlist{
     id:string,
     name:string,
-    songIds:[]
+    songIds:any[]
 }
 
 // export enum Pages{

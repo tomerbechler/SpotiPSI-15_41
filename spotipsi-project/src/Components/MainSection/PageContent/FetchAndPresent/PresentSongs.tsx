@@ -23,11 +23,12 @@ interface Props {
   favoriteIdList: string[];
   onLikeChange: (songId:string, checked:boolean) => void
   playlists:Playlist[]
+  addSong:(playlistId:string,songId:any) => void
 }
 
 
 
-const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playlists}) => {
+const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playlists,addSong}) => {
 
   const { classes } = useStyles();
 
@@ -61,7 +62,7 @@ const PresentSongs: React.FC<Props> = ({ data,favoriteIdList,onLikeChange,playli
             <ClickAwayListener onClickAway={handleClose}>
                 <MenuList>
                     {playlists.map((playlist) =>(
-                        <MenuItem onClick={() => { console.log(playlist.name); handleClose(); }}>{playlist.name}</MenuItem>
+                        <MenuItem onClick={() => { console.log(playlist.name); handleClose(); addSong(playlist.id,song.id)}}>{playlist.name}</MenuItem>
                     ))}
                 </MenuList>
                 </ClickAwayListener>

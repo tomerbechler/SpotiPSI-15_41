@@ -8,16 +8,18 @@ interface Props{
     FavoriteidList:string[]
     onLikeChange: (songId:string, checked:boolean) => void
     playlists:Playlist[]
+    addSong:(playlistId:string,songId:any) => void
+
 }
 
-const FavoritePage:React.FC<Props> = ({data,FavoriteidList,onLikeChange,playlists}) =>{
+const FavoritePage:React.FC<Props> = ({data,FavoriteidList,onLikeChange,playlists,addSong}) =>{
 
     const filterSongs:Song[] = data.filter(song=> FavoriteidList.some(id => id === song.id))
     const { classes } = useStyles();
     return(
         <div>
             <Typography variant="h3" className={classes.title}>שירים מועדפים</Typography>
-            <PresentSongs data={filterSongs} favoriteIdList={FavoriteidList} onLikeChange={onLikeChange} playlists={playlists}/>
+            <PresentSongs data={filterSongs} favoriteIdList={FavoriteidList} onLikeChange={onLikeChange} playlists={playlists} addSong={addSong}/>
         </div>
     )
 }
