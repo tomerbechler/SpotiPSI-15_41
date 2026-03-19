@@ -18,11 +18,12 @@ export interface Props{
     songs: Song[]
     favoriteIdList: string[]
     onLikeChange:(songId:string, checked:boolean) =>void
+    addSong:(playlistId:string, songIdToAdd:string)=>void
 }
 
 const PlaylistsPage:React.FC<Props> = ({
     playlists,addPlaylist,handlePlaylistClick,currentPlaylist,setCurrentPlaylist,
-    songs,favoriteIdList,onLikeChange}) =>{
+    songs,favoriteIdList,onLikeChange,addSong}) =>{
 
     const { classes } = useStyles();
 
@@ -38,7 +39,9 @@ const PlaylistsPage:React.FC<Props> = ({
                 data={currentPlaylistSongs}
                 favoriteIdList={favoriteIdList}
                 onLikeChange={onLikeChange}
-                playlists={playlists}/>
+                playlists={playlists}
+                addSong={addSong}/>
+                
         )
     }
 
