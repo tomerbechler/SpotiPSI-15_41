@@ -11,7 +11,7 @@ function App() {
   console.log(currentPage)
   
   return (
-    <div>
+    <div className={classes.body}>
       <Header />
       <div className={classes.mainSection}>
         <div className={classes.sidebar}>
@@ -21,8 +21,7 @@ function App() {
           <PageContent page={currentPage} />
         </div>
       </div>
-
-      <Player />
+      <Player/>
     </div>
   );
 }
