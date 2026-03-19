@@ -15,6 +15,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
   const [songs, setSongs] = useState<Song[]>([]);
   const [favoriteIdList, setFavoriteIdList] = useState<string[]>([]);
   const [playlists, SetPlaylists] = useState<Playlist[]>([]);
+  const [currentPlaylist, setCurrentPlaylist] = useState<Playlist|null> (null);
 
   useEffect(() => {
     async function loadSongs() {
@@ -91,6 +92,14 @@ export const PageContent: React.FC<Props> = ({ page }) => {
     }
   };
 
+  const handlePlaylistClick = (playlistName: string) => {
+    const selectedPlaylist = playlists.find((playlist) => playlist.name == playlistName);
+    if (selectedPlaylist) {
+            setCurrentPlaylist(selectedPlaylist)
+        }
+    }
+  
+
   if (page == "AllSongsPage") {
     console.log(page);
     return (
@@ -115,6 +124,15 @@ export const PageContent: React.FC<Props> = ({ page }) => {
     );
   } else if (page == "PlaylistsPage") {
     console.log(page);
-    return <PlaylistsPage playlists={playlists} addPlaylist={handlePlaylist} />;
+    return (<PlaylistsPage
+            playlists ={playlists}
+            addPlaylist={handlePlaylist}
+            handlePlaylistClick={handlePlaylistClick}
+            currentPlaylist={currentPlaylist}
+            setCurrentPlaylist={setCurrentPlaylist}
+            songs={songs}
+            favoriteIdList={favoriteIdList}
+            onLikeChange={handleLike}
+    />)
   }
 };
