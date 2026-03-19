@@ -87,6 +87,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
         data={songs}
         FavoriteidList={favoriteIdList}
         onLikeChange={handleLike}
+        playlists={playlists}
       />
     );
   } else if (page == "FavoritePage") {
@@ -96,6 +97,7 @@ export const PageContent: React.FC<Props> = ({ page }) => {
         data={songs}
         FavoriteidList={favoriteIdList}
         onLikeChange={handleLike}
+        playlists={playlists}
       />
     );
   } else if (page == "PlaylistsPage") {
