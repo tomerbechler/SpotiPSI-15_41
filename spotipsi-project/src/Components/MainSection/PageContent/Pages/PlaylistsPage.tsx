@@ -2,8 +2,13 @@ import { Typography} from "@mui/material";
 import useStyles from "../../PageContent/FetchAndPresent/presentSongsStyles";
 import FormDialog from "./Components/PlaylistDialog"
 
+interface Props{
+    
+    addPlaylist:(name:string)=>void
+}
 
-const FavoritePage:React.FC = () =>{
+const FavoritePage:React.FC<Props> = ({addPlaylist}) =>{
+
     const { classes } = useStyles();
     const func = () => {}
     return(
